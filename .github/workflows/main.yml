@@ -1,9 +1,9 @@
-name: Deploy to Local Server Dev env
+name: Deploy to Local Server main env
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   deploy:
