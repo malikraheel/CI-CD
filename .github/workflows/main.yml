@@ -6,17 +6,17 @@ on:
       - main
 
 jobs:
-  deploy:
+  test-ssh:
     runs-on: ubuntu-latest
 
     steps:
     
-    - name: Deploy
+    - name: test ssh
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
-        script: "cd /home/muneeb/Desktop/Raheel/cicd/CI-CD  && sudo git pull"
+        script: "echo 'hello welcome'"
        
