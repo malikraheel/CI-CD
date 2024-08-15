@@ -10,15 +10,4 @@ jobs:
     - name: Check network connectivity
       run: |
         ping -c 4 127.0.0.1
-        nc -zv 127.0.0.1:4040 22
-
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: 192.168.100.8
-        username: muneeb
-        password: ${{ secrets.SSH_PASSWORD }}
-        port: 22
-        script: whoami
-        timeout: 1m
-        command_timeout: 5m
+        nc -zv 127.0.0.1:4040
