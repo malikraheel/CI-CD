@@ -17,7 +17,6 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
-        key: "123"
         port: ${{ secrets.SSH_PORT }}
-        script: "cd /home/muneeb/Desktop/Raheel/cicd/CI-CD  && git pull"
+        script: "cd /home/muneeb/Desktop/Raheel/cicd/CI-CD  && sudo git pull"
        
