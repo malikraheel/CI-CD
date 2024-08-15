@@ -7,11 +7,18 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Check network connectivity
+      run: |
+        ping -c 4 192.168.100.8
+        nc -zv 192.168.100.8 22
+
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: 192.168.1.100  # Replace with your server's IP address or hostname
-        username: muneeb  # Replace with your SSH username
-        password: muneeb1234  # Replace with your SSH password
-        port: 22  # Replace with your SSH port if different
+        host: 192.168.100.8
+        username: muneeb
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
         script: whoami
+        timeout: 1m
+        command_timeout: 5m
