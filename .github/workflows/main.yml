@@ -1,13 +1,22 @@
-name: remote ssh command
+name: Deploy to Local Server main env
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: Build
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Check network connectivity
-      run: |
-        ping -c 4 127.0.0.1
-        nc -zv 127.0.0.1:4040
+    
+    - name: Deploy
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: "whoami"
+       
